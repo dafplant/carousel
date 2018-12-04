@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="carousel.css" rel="stylesheet">
+</head>
+<button class="control" id="pause">Pause</button>
+
+<script>
+
+var i = 0; 		
+var images = [];	
+var time = 2000;	
+
+var playing = true;
+var pauseButton = document.getElementById('pause');
+	 
+images[0] = "img1.jpg";
+images[1] = "img2.jpg";
+images[2] = "img3.jpeg";
+images[3] = "img4.jpeg";
+images[4] = "img5.jpg";
+
+
+function changeImg(){
+	
+	
+	if (playing==true){
+		console.log('playing1');
+			if(i < images.length - 1){
+		i++; 
+		} 
+		else { 
+			i = 0;
+		} 
+		document.slide.src = images[i];
+	setTimeout(changeImg, time);
+	} else {
+		i=i;
+		console.log('paused1');
+		clearTimeout();
+	}
+
+}	
+
+
+
+window.onload=changeImg;
+
+function pauseSlide(event){
+	console.log('paused')
+	pauseButton.innerText = 'Play';
+	playing = false;
+}
+
+function playSlide(event){
+	pauseButton.innerText = 'Pause';
+	playing = true;
+	changeImg();
+}
+
+pauseButton.addEventListener('click', function(){
+	if(playing){
+		pauseSlide();
+	} else {
+		playSlide();
+	}
+}) 
+
+
+</script>
+
+<img name="slide" width="600" height="400" />
+
+</html>

@@ -4,3 +4,49 @@
     left: 300px;
     padding: 0.25em;
   }
+
+  .next::after{
+    content: '>';
+    position: absolute;
+    top: 200px;
+    left: 590px;
+    background-color: white;
+    font-size: 20px;
+    width: 1em;
+    height: 3em;
+    font-weight: bold;
+    font-family: sans-serif;
+    line-height: 3em;
+    box-sizing: border-box;
+    padding: 0 0.2em;
+    cursor: pointer;
+    opacity: 0.25;
+    transition: opacity 0.1s linear;
+}
+
+.prev::after {
+    content: '<';
+    position: absolute;
+    top: 200px;
+    right: 300px;
+    background-color: white;
+    font-size: 20px;
+    width: 1em;
+    height: 3em;
+    font-weight: bold;
+    font-family: sans-serif;
+    line-height: 3em;
+    box-sizing: border-box;
+    padding: 0 0.2em;
+    cursor: pointer;
+    opacity: 0.25;
+    transition: opacity 0.1s linear;
+}
+.next:hover::after, .prev:hover::after {
+    opacity: 1;
+}
+
+.prev::after {
+    content: '<';
+    left: 0;
+}

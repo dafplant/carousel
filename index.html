@@ -2,14 +2,24 @@
 <html>
 <head>
 <link href="carousel.css" rel="stylesheet">
+<title>Image Carousel</title>
 </head>
 <button class="control" id="pause">Pause</button>
+<div class="imagecarousel">
+<div class="prev"></div>
+<div class = "next"></div>
+</div>
 
 <script>
+let carousel = document.getElementsByClassName("imagecarousel");
+var next = document.getElementsByClassName("next")[0];
+var prev = document.getElementsByClassName("prev")[0];
 
 var i = 0; 		
 var images = [];	
 var time = 2000;	
+
+const currentImageIndex = 0;
 
 var playing = true;
 var pauseButton = document.getElementById('pause');
@@ -66,6 +76,23 @@ pauseButton.addEventListener('click', function(){
 	}
 }) 
 
+next.addEventListener('click', function() {
+	console.log('forward')
+	i++;
+	if (i >= images.length) {
+		i = 0;
+	}
+	//playSlide();
+});
+
+prev.addEventListener('click', function() {
+	console.log('back')
+	i--;
+	if (i < 0) {
+		i = images.length - 1;
+	}
+	//playSlide();
+});
 
 </script>
 

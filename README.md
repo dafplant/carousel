@@ -1,0 +1,4 @@
+# carousel
+Image carousel
+
+A simple image carousel, that includes navigation arrows, a play/pause button, keyboard arrow navigation and is responsive to desktop or mobile viewing. 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="carousel.css" rel="stylesheet">
 <title>Image Carousel</title>
 </head>
@@ -18,8 +19,6 @@ var prev = document.getElementsByClassName("prev")[0];
 var i = 0; 		
 var images = [];	
 var time = 2000;	
-
-const currentImageIndex = 0;
 
 var playing = true;
 var pauseButton = document.getElementById('pause');
@@ -52,16 +51,16 @@ function changeImg(){
 
 }	
 
-
-
 window.onload=changeImg;
 
-function pauseSlide(event){
+//Pause automatic slideshow
+function pauseSlide(event){ 
 	console.log('paused')
 	pauseButton.innerText = 'Play';
 	playing = false;
 }
 
+//Play automatic slideshow
 function playSlide(event){
 	pauseButton.innerText = 'Pause';
 	playing = true;
@@ -76,23 +75,48 @@ pauseButton.addEventListener('click', function(){
 	}
 }) 
 
+
 next.addEventListener('click', function() {
-	console.log('forward')
-	i++;
-	if (i >= images.length) {
-		i = 0;
-	}
-	//playSlide();
-});
+      console.log('forward');
+      if (i >= images.length-1) {
+        i = 0;
+        document.slide.src = images[i];
+      }else{
+        i++;
+        document.slide.src= images[i];
+      }
+    });
 
 prev.addEventListener('click', function() {
+      console.log('back');
+      if (i <= 0) {
+        i = images.length - 1;
+        document.slide.src = images[i];
+      }else{
+        i--;
+        document.slide.src= images[i];
+      }
+    });
+
+document.body.addEventListener("keydown", function (e) {
+	var code = e.keyCode
+	var evt = new Event("click");
+
+	if (code == 39) {
+		self.next.dispatchEvent(evt);
+	}
+	if (code == 37) {
+		self.next.dispatchEvent(evt);
+	}
+});
+
+/* prev.addEventListener('click', function() {
 	console.log('back')
-	i--;
+	images[i--];
 	if (i < 0) {
 		i = images.length - 1;
 	}
-	//playSlide();
-});
+}); */
 
 </script>
 
